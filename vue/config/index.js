@@ -1,13 +1,14 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
 let outPutPath='../../back/src/main/resources/static/dist/'
+let assetsPublicPath='/dist/'
 module.exports = {
   build: {
     env: require('./prod.env'),
     index: path.resolve(__dirname, outPutPath+'index.html'),
     assetsRoot: path.resolve(__dirname, outPutPath),
     assetsSubDirectory: 'static',
-    assetsPublicPath: './',
+    assetsPublicPath: assetsPublicPath,
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.
