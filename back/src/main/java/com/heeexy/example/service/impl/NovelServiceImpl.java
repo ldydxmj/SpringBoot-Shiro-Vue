@@ -1,8 +1,8 @@
 package com.heeexy.example.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.heeexy.example.dao.ArticleDao;
-import com.heeexy.example.service.ArticleService;
+import com.heeexy.example.dao.NovelDao;
+import com.heeexy.example.service.NovelService;
 import com.heeexy.example.util.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,18 +15,18 @@ import java.util.List;
  * @date: 2017/10/24 16:07
  */
 @Service
-public class ArticleServiceImpl implements ArticleService {
+public class NovelServiceImpl implements NovelService {
 
 	@Autowired
-	private ArticleDao articleDao;
+	private NovelDao novelDao;
 
 	/**
 	 * 新增文章
 	 */
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public JSONObject addArticle(JSONObject jsonObject) {
-		articleDao.addArticle(jsonObject);
+	public JSONObject addNovel(JSONObject jsonObject) {
+		novelDao.addNovel(jsonObject);
 		return CommonUtil.successJson();
 	}
 
@@ -34,10 +34,10 @@ public class ArticleServiceImpl implements ArticleService {
 	 * 文章列表
 	 */
 	@Override
-	public JSONObject listArticle(JSONObject jsonObject) {
+	public JSONObject listNovel(JSONObject jsonObject) {
 		CommonUtil.fillPageParam(jsonObject);
-		int count = articleDao.countArticle(jsonObject);
-		List<JSONObject> list = articleDao.listArticle(jsonObject);
+		int count = novelDao.countNovel(jsonObject);
+		List<JSONObject> list = novelDao.listNovel(jsonObject);
 		System.out.println(list);
 		return CommonUtil.successPage(jsonObject, list, count);
 	}
@@ -47,14 +47,8 @@ public class ArticleServiceImpl implements ArticleService {
 	 */
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public JSONObject updateArticle(JSONObject jsonObject) {
-
-		articleDao.updateArticle(jsonObject);
-
-		System.out.println("===============");
-		System.out.println(articleDao.updateArticle(jsonObject));
-		System.out.println("===============");
-
+	public JSONObject updateNovel(JSONObject jsonObject) {
+		novelDao.updateNovel(jsonObject);
 		return CommonUtil.successJson();
 	}
 }

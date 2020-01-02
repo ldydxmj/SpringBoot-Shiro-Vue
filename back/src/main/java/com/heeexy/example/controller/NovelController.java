@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
  * @date: 2017/10/24 16:04
  */
 @RestController
-@RequestMapping("/article")
-public class ArticleController {
+@RequestMapping("/novel")
+public class NovelController {
 
 	@Autowired
 	private ArticleService articleService;
@@ -24,9 +24,8 @@ public class ArticleController {
 	 * 查询文章列表
 	 */
 	@RequiresPermissions("article:list")
-	@GetMapping("/listArticle")
+	@GetMapping("/listNovel")
 	public JSONObject listArticle(HttpServletRequest request) {
-
 
 		return articleService.listArticle(CommonUtil.request2Json(request));
 	}
@@ -35,7 +34,7 @@ public class ArticleController {
 	 * 新增文章
 	 */
 	@RequiresPermissions("article:add")
-	@PostMapping("/addArticle")
+	@PostMapping("/addNovel")
 	public JSONObject addArticle(@RequestBody JSONObject requestJson) {
 		CommonUtil.hasAllRequired(requestJson, "content");
 		return articleService.addArticle(requestJson);
@@ -45,7 +44,7 @@ public class ArticleController {
 	 * 修改文章
 	 */
 	@RequiresPermissions("article:update")
-	@PostMapping("/updateArticle")
+	@PostMapping("/updateNovel")
 	public JSONObject updateArticle(@RequestBody JSONObject requestJson) {
 		CommonUtil.hasAllRequired(requestJson, "id,content");
 		return articleService.updateArticle(requestJson);

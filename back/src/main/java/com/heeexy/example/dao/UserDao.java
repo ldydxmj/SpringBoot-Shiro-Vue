@@ -90,4 +90,5 @@ public interface UserDao {
 	 * 删除本角色全部权限
 	 */
 	int removeRoleAllPermission(JSONObject jsonObject);
+
 }
