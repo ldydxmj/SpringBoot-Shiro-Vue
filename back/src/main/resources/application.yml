@@ -3,5 +3,7 @@ spring:
       url: jdbc:mysql://47.113.82.122:3306/example?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=UTC
       username: root
       password: root
+  resources:
+      static-locations:  classpath:/static/dist/
 mybatis:
    mapperLocations: classpath:/mapper/*.xml
