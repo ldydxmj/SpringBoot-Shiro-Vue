@@ -16,6 +16,7 @@
         </template>
       </el-table-column>
       <el-table-column align="center" prop="content" label="文章" style="width: 60px;"></el-table-column>
+      <el-table-column align="center" prop="author" label="作者" style="width: 60px;"></el-table-column>
       <el-table-column align="center" label="创建时间" width="170">
         <template slot-scope="scope">
           <span>{{scope.row.createTime}}</span>
@@ -41,6 +42,10 @@
                style='width: 300px; margin-left:50px;'>
         <el-form-item label="文章">
           <el-input type="text" v-model="tempArticle.content">
+          </el-input>
+        </el-form-item>
+        <el-form-item label="作者">
+          <el-input type="text" v-model="tempArticle.author">
           </el-input>
         </el-form-item>
       </el-form>
@@ -72,7 +77,8 @@
         },
         tempArticle: {
           id: "",
-          content: ""
+          content: "",
+          author:""
         }
       }
     },
@@ -113,6 +119,7 @@
       showCreate() {
         //显示新增对话框
         this.tempArticle.content = "";
+        this.tempArticle.author = "";
         this.dialogStatus = "create"
         this.dialogFormVisible = true
       },
@@ -120,6 +127,7 @@
         //显示修改对话框
         this.tempArticle.id = this.list[$index].id;
         this.tempArticle.content = this.list[$index].content;
+        this.tempArticle.author = this.list[$index].author;
         this.dialogStatus = "update"
         this.dialogFormVisible = true
       },
