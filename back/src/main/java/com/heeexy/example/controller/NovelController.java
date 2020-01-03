@@ -1,7 +1,7 @@
 package com.heeexy.example.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.heeexy.example.service.ArticleService;
+import com.heeexy.example.service.NovelService;
 import com.heeexy.example.util.CommonUtil;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,34 +19,34 @@ import javax.servlet.http.HttpServletRequest;
 public class NovelController {
 
 	@Autowired
-	private ArticleService articleService;
+	private NovelService novelService;
 	/**
-	 * 查询文章列表
+	 * 查询小说列表
 	 */
-	@RequiresPermissions("article:list")
+	@RequiresPermissions("novel:list")
 	@GetMapping("/listNovel")
-	public JSONObject listArticle(HttpServletRequest request) {
+	public JSONObject listNovel(HttpServletRequest request) {
 
-		return articleService.listArticle(CommonUtil.request2Json(request));
+		return novelService.listNovel(CommonUtil.request2Json(request));
 	}
 
 	/**
-	 * 新增文章
+	 * 新增小说
 	 */
-	@RequiresPermissions("article:add")
+	@RequiresPermissions("novel:add")
 	@PostMapping("/addNovel")
-	public JSONObject addArticle(@RequestBody JSONObject requestJson) {
-		CommonUtil.hasAllRequired(requestJson, "content");
-		return articleService.addArticle(requestJson);
+	public JSONObject addNovel(@RequestBody JSONObject requestJson) {
+		CommonUtil.hasAllRequired(requestJson, "author,peoples,has_gao_shou");
+		return novelService.addNovel(requestJson);
 	}
 
 	/**
 	 * 修改文章
 	 */
-	@RequiresPermissions("article:update")
+	@RequiresPermissions("novel:update")
 	@PostMapping("/updateNovel")
-	public JSONObject updateArticle(@RequestBody JSONObject requestJson) {
-		CommonUtil.hasAllRequired(requestJson, "id,content");
-		return articleService.updateArticle(requestJson);
+	public JSONObject updateNovel(@RequestBody JSONObject requestJson) {
+		CommonUtil.hasAllRequired(requestJson, "id,author,peoples,has_gao_shou");
+		return novelService.updateNovel(requestJson);
 	}
 }

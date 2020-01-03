@@ -21,7 +21,7 @@ public class NovelServiceImpl implements NovelService {
 	private NovelDao novelDao;
 
 	/**
-	 * 新增文章
+	 * 新增小说
 	 */
 	@Override
 	@Transactional(rollbackFor = Exception.class)
@@ -31,7 +31,7 @@ public class NovelServiceImpl implements NovelService {
 	}
 
 	/**
-	 * 文章列表
+	 * 小说列表
 	 */
 	@Override
 	public JSONObject listNovel(JSONObject jsonObject) {
@@ -43,7 +43,7 @@ public class NovelServiceImpl implements NovelService {
 	}
 
 	/**
-	 * 更新文章
+	 * 更新小说
 	 */
 	@Override
 	@Transactional(rollbackFor = Exception.class)

@@ -40,6 +40,13 @@ export const asyncRouterMap = [
         meta: {title: '文章', icon: 'example'},
         menu: 'article'
       },
+      {
+        path: 'novel',
+        name: '小说',
+        component: _import('novel/novel'),
+        meta: {title: '小说', icon: 'example'},
+        menu: 'novel'
+      },
     ]
   },
   {
