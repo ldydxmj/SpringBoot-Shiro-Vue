@@ -6,7 +6,8 @@ import com.heeexy.example.util.CommonUtil;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -20,13 +21,14 @@ public class NovelController {
 
 	@Autowired
 	private NovelService novelService;
+	private Logger logger = LoggerFactory.getLogger(NovelController.class);
 	/**
 	 * 查询小说列表
 	 */
 	@RequiresPermissions("novel:list")
 	@GetMapping("/listNovel")
 	public JSONObject listNovel(HttpServletRequest request) {
-
+		logger.error("listNovel的值为:" + request);
 		return novelService.listNovel(CommonUtil.request2Json(request));
 	}
 
