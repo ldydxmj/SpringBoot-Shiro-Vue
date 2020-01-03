@@ -51,9 +51,9 @@ public class ArticleServiceImpl implements ArticleService {
 
 		articleDao.updateArticle(jsonObject);
 
-		System.out.println("===============");
-		System.out.println(articleDao.updateArticle(jsonObject));
-		System.out.println("===============");
+		System.out.println("======1=========");
+		System.out.println(jsonObject);
+		System.out.println("=======1========");
 
 		return CommonUtil.successJson();
 	}

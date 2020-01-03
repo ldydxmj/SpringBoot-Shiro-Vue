@@ -37,7 +37,7 @@ public class ArticleController {
 	@RequiresPermissions("article:add")
 	@PostMapping("/addArticle")
 	public JSONObject addArticle(@RequestBody JSONObject requestJson) {
-		CommonUtil.hasAllRequired(requestJson, "content");
+		CommonUtil.hasAllRequired(requestJson, "content,author");
 		return articleService.addArticle(requestJson);
 	}
 
@@ -47,7 +47,10 @@ public class ArticleController {
 	@RequiresPermissions("article:update")
 	@PostMapping("/updateArticle")
 	public JSONObject updateArticle(@RequestBody JSONObject requestJson) {
-		CommonUtil.hasAllRequired(requestJson, "id,content");
+		CommonUtil.hasAllRequired(requestJson, "id,content,author");
+		System.out.println(21);
+		System.out.println(requestJson);
+		System.out.println(21);
 		return articleService.updateArticle(requestJson);
 	}
 }

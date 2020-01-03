@@ -12,7 +12,7 @@ export const constantRouterMap = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: '/system/article',
     name: '首页',
     hidden: true,
     children: [{
