@@ -1,4 +1,4 @@
 module.exports = {
   NODE_ENV: '"production"',
-  BASE_URL:'"/java/"',
+  BASE_URL:'"/"',
 }

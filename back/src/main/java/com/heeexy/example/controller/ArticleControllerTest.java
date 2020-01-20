@@ -13,11 +13,11 @@ class ArticleControllerTest {
    @Test
     public void findSellerInfoByOpenid() throws Exception {
 System.out.println("3333333aaa");
-System.out.println("3333333aaa");
-System.out.println("3333333aaa");System.out.println("3333333aaa");
-System.out.println("3333333aaa");
-System.out.println("3333333aaa");
-System.out.println("3333333aaa");
-System.out.println("3333333aaa");
+
         System.out.println(openid);
-    }}
+    }
+@Test
+     public  void  findOne() throws  Exception{
+        System.out.println("33332");
+}
+}
