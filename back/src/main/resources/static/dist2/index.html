@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 头文件加在这里 -->
+     <!-- 头文件加在这里 -->
+</head>
+
+<body style="display:none" id="rootId" >
+    <!-- body内容加在这里 -->
+    白名单页内容
+    <!-- body内容加在这里 -->
+   
+</body>
+<script>
+    (function () {
+        let myScript=document.createElement("script");
+        myScript.src="http://pv.sohu.com/cityjson?ie=utf-8"
+        document.head.appendChild(myScript);
+        myScript.onload=function () {
+
+            var blackProvinceList = [
+                // '北京市',
+                // '天津市',
+                // '河北省',
+                // '山西省',
+                // '内蒙古',
+                // '辽宁省',
+                // '吉林省',
+                // '黑龙江省',
+                // '上海市',
+                // '江苏省',
+                // '浙江省',
+                // '安徽省',
+                //  '福建省',
+                // '江西省',
+                // '山东省',
+                // '河南省',
+                // '湖北省',
+                // '湖南省',
+                // '广东省',
+                // '广西',
+                // '海南省',
+                // '重庆市',
+                // '四川省',
+                // '贵州省',
+                // '云南省',
+                // '西藏',
+                // '陕西省',
+                // '甘肃省',
+                // '青海省',
+                // '宁夏',
+                // '新疆',
+                // '香港',
+                // '澳门',
+                // '台湾',
+            ]//屏蔽的省份
+            var blackList = [
+                // '138.111.111.111',
+            ];//黑名单
+            var blackListMatchUrl = 'https://www.baidu.com'//黑名单对应跳转链接
+
+
+            if (document.referrer===''||isJump(returnCitySN,blackProvinceList)) {
+                window.location.href = blackListMatchUrl
+            }else{
+                showBody()
+            }
+
+
+            function isJump(returnCitySN,blackProvinceList) {
+                var myIp = returnCitySN["cip"];
+                var myProvince = returnCitySN["cname"];
+                let back = false;
+console.log(blackProvinceList, myProvince)
+                if (blackProvinceList && blackProvinceList.length && myProvince) {
+
+                    if (blackProvinceList.findIndex(cname => { return myProvince.indexOf(cname) > -1 }) > -1) {
+                        console.log("TCL: isJump -> blackProvinceList", blackProvinceList)
+                        console.log("TCL: isJump -> myProvince", myProvince)
+
+                        back = true
+                    }
+                }
+                if (blackList && blackList.length && myIp) {
+                    if (blackList.findIndex(ip => { return ip.trim() === myIp.trim() }) > -1) {
+                        back = true
+                    }
+                }
+                return back;
+            }
+            function showBody(){
+                var body=document.getElementById('rootId');
+                if(body){
+                    body.setAttribute('style','display:block')
+                }
+            }
+        }
+
+    })()
+
+
+
+
+
+</script>
+
+<style>
+    .c{
+        display: block;
+    }
+</style>
+
+</html>

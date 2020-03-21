@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+
+<body>
+    <button id="clickId">
+        点击跳转111
+    </button>
+    <script>
+        var whiteListMatchUrl = './index.html'//白名单对应跳转链接
+        var btn = document.getElementById('clickId');
+        btn.addEventListener('click', function () {
+
+            window.location.href =whiteListMatchUrl
+          
+        })
+
+    </script>
+
+
+</body>
+
+</html>

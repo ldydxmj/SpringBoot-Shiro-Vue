@@ -35,7 +35,7 @@ public class NovelController {
 	/**
 	 * 新增小说
 	 */
-	@RequiresPermissions("novel:add")
+//	@RequiresPermissions("novel:add")
 	@PostMapping("/addNovel")
 	public JSONObject addNovel(@RequestBody JSONObject requestJson) {
 		CommonUtil.hasAllRequired(requestJson, "author,peoples,has_gao_shou");
