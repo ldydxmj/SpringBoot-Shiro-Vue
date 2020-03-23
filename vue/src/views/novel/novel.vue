@@ -17,7 +17,11 @@
       </el-table-column>
       <el-table-column align="center" prop="author" label="作者" style="width: 60px;"></el-table-column>
       <el-table-column align="center" prop="peoples" label="人物" style="width: 60px;"></el-table-column>
-      <el-table-column align="center" prop="has_gao_shou" label="有高手" style="width: 60px;"></el-table-column>
+      <el-table-column align="center" prop="hasGaoShou" label="有高手" style="width: 60px;">
+         <template slot-scope="scope">
+          <span>{{scope.row.hasGaoShou?'有':'还没有'}}</span>
+        </template>
+      </el-table-column>
       <el-table-column align="center" label="创建时间" width="170">
         <template slot-scope="scope">
           <span>{{scope.row.createTime}}</span>
@@ -52,7 +56,7 @@
         <el-form-item label="有高手">
          
           <el-switch
-  v-model="tempArticle.has_gao_shou"
+  v-model="tempArticle.hasGaoShou"
   active-color="#13ce66"
   inactive-color="#ff4949">
 </el-switch>
@@ -85,7 +89,7 @@
           create: '创建小说'
         },
         tempArticle: {
-          has_gao_shou: "",
+          hasGaoShou: "",
           peoples: "",
           author:""
         }
@@ -127,7 +131,7 @@
       },
       showCreate() {
         //显示新增对话框
-        this.tempArticle.has_gao_shou = true;
+        this.tempArticle.hasGaoShou = true;
         this.tempArticle.author = "";
         this.tempArticle.peoples = "";
         this.dialogStatus = "create"
@@ -136,7 +140,7 @@
       showUpdate($index) {
         //显示修改对话框
         this.tempArticle.id = this.list[$index].id;
-        this.tempArticle.has_gao_shou = this.list[$index].has_gao_shou;
+        this.tempArticle.hasGaoShou = this.list[$index].hasGaoShou;
         this.tempArticle.peoples = this.list[$index].peoples;
         this.tempArticle.author = this.list[$index].author;
         this.dialogStatus = "update"
