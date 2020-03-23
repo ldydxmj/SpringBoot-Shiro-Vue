@@ -5,9 +5,9 @@
 
     <insert id="addNovel" parameterType="com.alibaba.fastjson.JSONObject">
         INSERT INTO novel
-            (author,peoples,has_gao_shou)
+            (author,peoples,hasGaoShou)
         VALUES
-            (#{author},#{peoples},#{has_gao_shou})
+            (#{author},#{peoples},#{hasGaoShou})
     </insert>
 
     <select id="countNovel" resultType="Integer">
@@ -21,7 +21,7 @@
             w.id                                      id,
             w.author                          author,
             w.peoples                                 peoples,
-            w.has_gao_shou                          has_gao_shou,
+            w.hasGaoShou                          hasGaoShou,
             date_format(w.create_time, '%Y.%m.%d %T') createTime
         FROM novel w
         WHERE w.delete_status = '1'
@@ -33,7 +33,7 @@
         UPDATE novel
         SET
             peoples = #{peoples},
-             has_gao_shou = #{has_gao_shou},
+             hasGaoShou = #{hasGaoShou},
             author = #{author}
         WHERE id = #{id}
     </update>

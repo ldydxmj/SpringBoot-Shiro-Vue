@@ -25,7 +25,7 @@ public class NovelController {
 	/**
 	 * 查询小说列表
 	 */
-	@RequiresPermissions("novel:list")
+//	@RequiresPermissions("novel:list")
 	@GetMapping("/listNovel")
 	public JSONObject listNovel(HttpServletRequest request) {
 		logger.error("listNovel的值为:" + request);
@@ -38,17 +38,17 @@ public class NovelController {
 //	@RequiresPermissions("novel:add")
 	@PostMapping("/addNovel")
 	public JSONObject addNovel(@RequestBody JSONObject requestJson) {
-		CommonUtil.hasAllRequired(requestJson, "author,peoples,has_gao_shou");
+		CommonUtil.hasAllRequired(requestJson, "author,peoples,hasGaoShou");
 		return novelService.addNovel(requestJson);
 	}
 
 	/**
 	 * 修改文章
 	 */
-	@RequiresPermissions("novel:update")
+//	@RequiresPermissions("novel:update")
 	@PostMapping("/updateNovel")
 	public JSONObject updateNovel(@RequestBody JSONObject requestJson) {
-		CommonUtil.hasAllRequired(requestJson, "id,author,peoples,has_gao_shou");
+		CommonUtil.hasAllRequired(requestJson, "id,author,peoples,hasGaoShou");
 		return novelService.updateNovel(requestJson);
 	}
 }
